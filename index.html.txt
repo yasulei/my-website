@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chiikawa Surprise</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        h1 {
+            color: #ff6b9e;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        #container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        #chiikawa {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgNMGULrnYUwXNE3Pc4tqIz65oGbBF_LkopA&s');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.2s;
+            display: none;
+        }
+        
+        #lyrics {
+            font-size: 1.5rem;
+            color: #ff6b9e;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+            animation: textColor 2s infinite;
+        }
+        
+        .dance {
+            animation: dance 0.5s infinite alternate;
+        }
+        
+        @keyframes dance {
+            0% { transform: rotate(-5deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-10px); }
+            100% { transform: rotate(0deg) translateY(0); }
+        }
+        
+        @keyframes textColor {
+            0% { color: #ff6b9e; }
+            25% { color: #ff9e6b; }
+            50% { color: #6bff9e; }
+            75% { color: #9e6bff; }
+            100% { color: #ff6b9e; }
+        }
+        
+        .mic {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000"><path d="M12 15c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3zm5.91-3c-.49 0-.9.36-.98.85C16.52 15.22 14.47 17 12 17s-4.52-1.78-4.93-4.15c-.08-.49-.49-.85-.98-.85-.61 0-1.09.54-1 1.14.49 3 2.89 5.35 5.91 5.78V21c0 .55.45 1 1 1s1-.45 1-1v-2.08c3.02-.43 5.42-2.78 5.91-5.78.1-.6-.39-1.14-1-1.14z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            right: 80px;
+            top: 50px;
+            animation: micMove 0.5s infinite alternate;
+        }
+        
+        @keyframes micMove {
+            0% { transform: translateY(0) rotate(-5deg); }
+            100% { transform: translateY(-10px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Click anywhere for a Chiikawa surprise! 🐰</h1>
+        <div id="chiikawa"></div>
+        <div id="lyrics">Never gonna give you up! 🎤</div>
+        <div class="mic"></div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const body = document.body;
+            const chiikawa = document.getElementById('chiikawa');
+            const lyrics = document.getElementById('lyrics');
+            const mic = document.querySelector('.mic');
+            
+            body.addEventListener('click', function() {
+                // Change background color
+                body.style.backgroundColor = '#ffebf3';
+                
+                // Hide the title
+                document.querySelector('h1').style.display = 'none';
+                
+                // Show Chiikawa and lyrics
+                chiikawa.style.display = 'block';
+                lyrics.style.display = 'block';
+                mic.style.display = 'block';
+                
+                // Start animations
+                chiikawa.classList.add('dance');
+            });
+        });
+    </script>
+</body>
+</html>
